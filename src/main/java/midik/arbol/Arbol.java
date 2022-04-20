@@ -179,14 +179,14 @@ public class Arbol {
     public void inOrden(Nodo nodo) {
         if (nodo != null) {
             inOrden(nodo.getHijoIzquierdo());
-            System.out.println(nodo.getCarta().getValorReal() + nodo.getCarta().getTipo().getSimbolo() + ", ");
+            System.out.println(nodo.getCarta());
             inOrden(nodo.getHijoDerecho());
         }
     }
 
     public void preOrden(Nodo nodo) {
         if (nodo != null) {
-            System.out.println(nodo.getCarta().getValorReal() + nodo.getCarta().getTipo().getSimbolo() + ", ");
+            System.out.println(nodo.getCarta());
             preOrden(nodo.getHijoIzquierdo());
             preOrden(nodo.getHijoDerecho());
         }
@@ -196,7 +196,7 @@ public class Arbol {
         if (nodo != null) {
             postOrden(nodo.getHijoIzquierdo());
             postOrden(nodo.getHijoDerecho());
-            System.out.println(nodo.getCarta().getValorReal() + nodo.getCarta().getTipo().getSimbolo() + ", ");
+            System.out.println(nodo.getCarta());
         }
     }
 

@@ -37,7 +37,23 @@ public class Carta {
 
     @Override
     public String toString() {
-        return "Nodo{" + "Valor=" + valor + ", Tipo=" + tipo.getSimbolo() + '}';
+        return formatearValor(this.getValorReal()) + tipo.getSimbolo();
     }
 
+    //Convierte en 11 a J, 12 a Q y 13 a K. 
+    private String formatearValor(int valor) {
+        String valorS = String.valueOf(valor);
+        switch (valor) {
+            case 11:
+                valorS = "J";
+                break;
+            case 12:
+                valorS = "Q";
+                break;
+            case 13:
+                valorS = "K";
+                break;
+        }
+        return valorS;
+    }
 }
