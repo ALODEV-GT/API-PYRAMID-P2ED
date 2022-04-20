@@ -1,0 +1,51 @@
+package midik.jsonInsert;
+import java_cup.runtime.Symbol;
+import midik.arbol.Tipo;
+import midik.arbol.Carta;
+
+parser code
+{: 
+    private Carta carta = null;
+    private boolean errores = false;
+
+    public boolean isErrores(){
+        return errores;
+    }
+
+    public Carta getCarta(){
+        return carta;
+    }
+
+    public void syntax_error(Symbol s){
+        errores = true;
+        System.out.println("Error sintactico: " + s.value.toString() + " Linea:" + s.right + " Columna:" + s.left + ". ");
+    }
+
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
+        errores = true;
+        System.out.println("No se pudo recuperar el analizador. Linea:" + s.right + " Columna:" + s.left + "\n");
+    }
+:};
+
+terminal String LLAVE_A,LLAVE_C,COMILLAS,DOS_PUNTOS,ENTERO,CORAZON,TREBOL,DIAMANTE,PICA,INSERT;
+non terminal String s0,s1,s2,inicio,insertar;
+non terminal Tipo tipo;
+
+start with inicio; 
+
+inicio::= LLAVE_A s0
+;
+s0::= s1
+| s2
+;
+s1::= LLAVE_C
+;
+s2::= insertar s1
+;
+insertar::= COMILLAS INSERT COMILLAS DOS_PUNTOS COMILLAS ENTERO:var1 tipo:var2 COMILLAS {:carta = new Carta(Integer.valueOf(var1), var2);:}
+;
+tipo::= TREBOL      {:RESULT=Tipo.TREBOL;:}
+| CORAZON           {:RESULT=Tipo.CORAZON;:}
+| DIAMANTE          {:RESULT=Tipo.DIAMANTE;:}
+| PICA              {:RESULT=Tipo.PICA;:}
+;

@@ -1,0 +1,56 @@
+package midik.jsonStart;
+import java_cup.runtime.Symbol;
+import midik.arbol.Tipo;
+import midik.arbol.Carta;
+import java.util.ArrayList;
+
+parser code
+{: 
+    private ArrayList<Carta> cartas = new ArrayList<>();
+    private boolean errores = false;
+
+    public boolean isErrores(){
+        return errores;
+    }
+
+    public ArrayList<Carta> getCartas(){
+        return cartas;
+    }
+
+    public void syntax_error(Symbol s){
+        errores = true;
+        System.out.println("Error sintactico: " + s.value.toString() + " Linea:" + s.right + " Columna:" + s.left + ". ");
+    }
+
+    public void unrecovered_syntax_error(Symbol s) throws java.lang.Exception {
+        errores = true;
+        System.out.println("No se pudo recuperar el analizador. Linea:" + s.right + " Columna:" + s.left + "\n");
+    }
+:};
+
+terminal String LLAVE_A,LLAVE_C,COMILLAS,DOS_PUNTOS,OTROS,COMA,CORAZON,TREBOL,DIAMANTE,PICA,ENTERO;
+non terminal String s0,s1,s2,s3,inicio,carta;
+non terminal Tipo tipo;
+
+
+start with inicio;
+
+inicio::= LLAVE_A s0
+;
+s0::= s1
+| s3
+;
+s1::= LLAVE_C
+;
+s3::= carta s2
+;
+carta::= COMILLAS ENTERO COMILLAS DOS_PUNTOS COMILLAS ENTERO:var1 tipo:var2 COMILLAS {:cartas.add(new Carta(Integer.valueOf(var1), var2));:}
+;
+tipo::= TREBOL      {:RESULT=Tipo.TREBOL;:}
+| CORAZON           {:RESULT=Tipo.CORAZON;:}
+| DIAMANTE          {:RESULT=Tipo.DIAMANTE;:}
+| PICA              {:RESULT=Tipo.PICA;:}
+;
+s2::= s1
+| COMA s3
+;
