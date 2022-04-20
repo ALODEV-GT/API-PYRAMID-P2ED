@@ -8,6 +8,7 @@ midik/jsonInsert/lexerJsonInsert.class
 midik/jsonStart/parser$CUP$parser$actions.class
 midik/arbol/Tipo.class
 midik/controladores/ControladorDelete.class
+funcionamiento/AddF.class
 midik/controladores/ControladorGetTree.class
 midik/jsonInsert/sym.class
 test/Test.class

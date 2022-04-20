@@ -26,8 +26,8 @@ public class DeleteF {
     public void eliminarCartas() {
         Arbol arbol = SingletonArbol.getArbol();
         try {
-            String jsonStart = Comunes.remplazarSimbolos(Comunes.obtenerContenido(request.getReader()));
-            StringReader sr = new StringReader(jsonStart);
+            String jsonDelete = Comunes.remplazarSimbolos(Comunes.obtenerContenido(request.getReader()));
+            StringReader sr = new StringReader(jsonDelete);
             lexerJsonDelete lexer = new lexerJsonDelete(sr);
             parser par = new parser(lexer);
 
@@ -39,7 +39,7 @@ public class DeleteF {
                     eliminarCartas(cartas, arbol);
                     arbol.preOrden(arbol.getRaiz());
                     System.out.println("Analisis del JsonDelete correcto.");
-                }else{
+                } else {
                     System.out.println("Existen errores sintacticos en JsonDelete");
                     response.setStatus(400);
                 }

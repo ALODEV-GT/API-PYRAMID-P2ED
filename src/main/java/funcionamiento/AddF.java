@@ -2,57 +2,53 @@ package funcionamiento;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import midik.arbol.Arbol;
 import midik.arbol.Carta;
 import midik.comunes.Comunes;
-import midik.jsonStart.lexerJsonStart;
-import midik.jsonStart.parser;
+import midik.jsonInsert.lexerJsonInsert;
+import midik.jsonInsert.parser;
 import midik.singleton.SingletonArbol;
 
-public class StartF {
+public class AddF {
 
     protected HttpServletRequest request;
     protected HttpServletResponse response;
 
-    public StartF(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public AddF(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.request = request;
         this.response = response;
     }
 
-    public void recibirCartasIniciales() {
+    public void insertarCarta() {
         Arbol arbol = SingletonArbol.getArbol();
         try {
-            String jsonStart = Comunes.remplazarSimbolos(Comunes.obtenerContenido(request.getReader()));
-            StringReader sr = new StringReader(jsonStart);
-            lexerJsonStart lexer = new lexerJsonStart(sr);
+            String jsonAdd = Comunes.remplazarSimbolos(Comunes.obtenerContenido(request.getReader()));
+            StringReader sr = new StringReader(jsonAdd);
+            lexerJsonInsert lexer = new lexerJsonInsert(sr);
             parser par = new parser(lexer);
 
             try {
                 par.parse();
-                ArrayList<Carta> nodos = par.getCartas();
+                Carta carta = par.getCarta();
                 if (!par.isErrores()) {
-                    for (Carta carta : nodos) {
-                        arbol.insertar(carta, response);
-                    }
+                    arbol.insertar(carta, response);
                     arbol.preOrden(arbol.getRaiz());
                     System.out.println("Analisis correcto");
-                }else{
-                    System.out.println("Existen errores sintacticos en JsonStart");
+                } else {
+                    System.out.println("Existen errores sintacticos en JsonAdd");
                     response.setStatus(400);
                 }
             } catch (Exception ex) {
-                System.out.println("Ocurrieron errores al analizar JsonStart");
+                System.out.println("Ocurrieron errores al analizar JsonAdd");
                 response.setStatus(400);
             }
 
         } catch (IOException ex) {
-            System.out.println("Error al leer jsonStart");
+            System.out.println("Error al leer jsonAdd");
             response.setStatus(400);
         }
-
     }
 }
