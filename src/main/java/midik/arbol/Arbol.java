@@ -1,5 +1,6 @@
 package midik.arbol;
 
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletResponse;
 
 public class Arbol {
@@ -176,28 +177,47 @@ public class Arbol {
     }
 
     //Recorridos
-    public void inOrden(Nodo nodo) {
+    private void inOrden(Nodo nodo, ArrayList<String> cartas) {
         if (nodo != null) {
-            inOrden(nodo.getHijoIzquierdo());
-            System.out.println(nodo.getCarta());
-            inOrden(nodo.getHijoDerecho());
+            inOrden(nodo.getHijoIzquierdo(), cartas);
+            cartas.add(nodo.getCarta().toString());
+            inOrden(nodo.getHijoDerecho(), cartas);
         }
     }
 
-    public void preOrden(Nodo nodo) {
+    private void preOrden(Nodo nodo, ArrayList<String> cartas) {
         if (nodo != null) {
-            System.out.println(nodo.getCarta());
-            preOrden(nodo.getHijoIzquierdo());
-            preOrden(nodo.getHijoDerecho());
+            cartas.add(nodo.getCarta().toString());
+            preOrden(nodo.getHijoIzquierdo(), cartas);
+            preOrden(nodo.getHijoDerecho(), cartas);
         }
     }
 
-    public void postOrden(Nodo nodo) {
+    private void postOrden(Nodo nodo, ArrayList<String> cartas) {
         if (nodo != null) {
-            postOrden(nodo.getHijoIzquierdo());
-            postOrden(nodo.getHijoDerecho());
-            System.out.println(nodo.getCarta());
+            postOrden(nodo.getHijoIzquierdo(), cartas);
+            postOrden(nodo.getHijoDerecho(), cartas);
+            cartas.add(nodo.getCarta().toString());
         }
+    }
+
+    //Metodos para devolver el orden
+    public ArrayList<String> inOrden() {
+        ArrayList<String> cartas = new ArrayList<>();
+        this.inOrden(this.raiz, cartas);
+        return cartas;
+    }
+
+    public ArrayList<String> preOrden() {
+        ArrayList<String> cartas = new ArrayList<>();
+        this.preOrden(this.raiz, cartas);
+        return cartas;
+    }
+
+    public ArrayList<String> postOrden() {
+        ArrayList<String> cartas = new ArrayList<>();
+        this.postOrden(this.raiz, cartas);
+        return cartas;
     }
 
     public Nodo getRaiz() {

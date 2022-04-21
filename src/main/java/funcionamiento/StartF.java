@@ -38,7 +38,14 @@ public class StartF {
                     for (Carta carta : nodos) {
                         arbol.insertar(carta, response);
                     }
-                    arbol.preOrden(arbol.getRaiz());
+                    
+                    
+                    ArrayList<String> cartasS = arbol.preOrden();
+                    for (String c : cartasS) {
+                        System.out.println(c);
+                    }
+                    
+                    
                     System.out.println("Analisis correcto");
                 }else{
                     System.out.println("Existen errores sintacticos en JsonStart");

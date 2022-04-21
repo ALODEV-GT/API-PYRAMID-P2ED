@@ -21,13 +21,7 @@ public class Test {
         Carta carta12 = new Carta(26, Tipo.TREBOL);
         Carta carta13 = new Carta(18, Tipo.TREBOL);
 
-        Arbol arbol = new Arbol();
 
-        System.out.println("Inicio------------------------>");
-        arbol.preOrden(arbol.getRaiz());
-        System.out.println("Se elimino:");
-        arbol.eliminar(carta10, arbol.getRaiz());
-        arbol.preOrden(arbol.getRaiz());
 
     }
 }

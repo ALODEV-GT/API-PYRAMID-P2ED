@@ -37,7 +37,12 @@ public class DeleteF {
                     ArrayList<Carta> cartas = par.getCartas();
 
                     eliminarCartas(cartas, arbol);
-                    arbol.preOrden(arbol.getRaiz());
+
+                    ArrayList<String> cartasS = arbol.preOrden();
+                    for (String c : cartasS) {
+                        System.out.println(c);
+                    }
+
                     System.out.println("Analisis del JsonDelete correcto.");
                 } else {
                     System.out.println("Existen errores sintacticos en JsonDelete");

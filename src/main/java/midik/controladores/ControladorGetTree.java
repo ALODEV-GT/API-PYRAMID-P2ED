@@ -1,5 +1,6 @@
 package midik.controladores;
 
+import funcionamiento.GetTreeF;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,7 @@ public class ControladorGetTree extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("Peticion get /Game/avltree");
+        new GetTreeF(request, response).getOrden();
     }
 
 }

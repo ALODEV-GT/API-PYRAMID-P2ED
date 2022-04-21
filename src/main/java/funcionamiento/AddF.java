@@ -2,6 +2,7 @@ package funcionamiento;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,7 +36,12 @@ public class AddF {
                 Carta carta = par.getCarta();
                 if (!par.isErrores()) {
                     arbol.insertar(carta, response);
-                    arbol.preOrden(arbol.getRaiz());
+                    
+                    ArrayList<String> cartasS = arbol.preOrden();
+                    for (String c : cartasS) {
+                        System.out.println(c);
+                    }
+                    
                     System.out.println("Analisis correcto");
                 } else {
                     System.out.println("Existen errores sintacticos en JsonAdd");

@@ -5,6 +5,7 @@ midik/jsonDelete/lexerJsonDelete.class
 midik/jsonDelete/sym.class
 midik/jsonStart/parser.class
 midik/jsonInsert/lexerJsonInsert.class
+funcionamiento/GetTreeF.class
 midik/jsonStart/parser$CUP$parser$actions.class
 midik/arbol/Tipo.class
 midik/controladores/ControladorDelete.class
