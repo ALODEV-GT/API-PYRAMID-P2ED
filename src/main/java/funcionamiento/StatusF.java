@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import midik.arbol.Arbol;
+import midik.generadorImagen.Generador;
 import midik.singleton.SingletonArbol;
 
 public class StatusF {
@@ -19,6 +20,7 @@ public class StatusF {
 
     public void getStatus() {
         Arbol arbol = SingletonArbol.getArbol();
-
+        Generador generador = new Generador();
+        generador.graficar("arbolin.jpg", arbol.getRaiz());
     }
 }

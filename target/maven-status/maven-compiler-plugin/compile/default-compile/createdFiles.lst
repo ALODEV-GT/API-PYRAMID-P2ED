@@ -15,6 +15,7 @@ midik/jsonInsert/sym.class
 test/Test.class
 funcionamiento/StatusF.class
 midik/jsonStart/sym.class
+midik/generadorImagen/Generador.class
 midik/jsonDelete/parser$CUP$parser$actions.class
 funcionamiento/LevelF.class
 midik/jsonInsert/parser.class
@@ -29,5 +30,4 @@ midik/arbol/Nodo.class
 midik/controladores/ControladorLevel.class
 funcionamiento/StartF.class
 funcionamiento/DeleteF.class
-test/Prueba.class
 midik/controladores/ControladorStatus.class

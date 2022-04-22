@@ -2,6 +2,9 @@ package midik.arbol;
 
 public class Nodo {
 
+    private static int llave = 1;
+    private final int id;
+
     private Carta carta;
     private int factorEquilibrio;
     private Nodo hijoIzquierdo;
@@ -12,6 +15,7 @@ public class Nodo {
         this.factorEquilibrio = 0;
         this.hijoIzquierdo = null;
         this.hijoDerecho = null;
+        this.id = llave++;
     }
 
     public Carta getCarta() {
@@ -44,6 +48,10 @@ public class Nodo {
 
     public void setHijoDerecho(Nodo hijoDerecho) {
         this.hijoDerecho = hijoDerecho;
+    }
+
+    public int getId() {
+        return id;
     }
 
 }
