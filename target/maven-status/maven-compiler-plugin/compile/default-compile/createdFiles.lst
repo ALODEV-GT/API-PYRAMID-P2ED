@@ -15,6 +15,7 @@ midik/jsonInsert/sym.class
 test/Test.class
 midik/jsonStart/sym.class
 midik/jsonDelete/parser$CUP$parser$actions.class
+funcionamiento/LevelF.class
 midik/jsonInsert/parser.class
 midik/controladores/ControladorStart.class
 midik/controladores/ControladorAdd.class

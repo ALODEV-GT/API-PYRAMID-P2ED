@@ -8,36 +8,24 @@ import javax.servlet.http.HttpServletResponse;
 import midik.arbol.Arbol;
 import midik.singleton.SingletonArbol;
 
-public class GetTreeF {
+public class LevelF {
 
     protected HttpServletRequest request;
     protected HttpServletResponse response;
 
-    public GetTreeF(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public LevelF(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.request = request;
         this.response = response;
     }
 
-    public void getOrden() {
-        String orden = this.request.getParameter("transversal");
+    public void getNivel() {
         Arbol arbol = SingletonArbol.getArbol();
         try {
-            switch (orden) {
-                case "preOrder":
-                    this.crearJson(arbol.preOrden());
-                    break;
-                case "inOrder":
-                    this.crearJson(arbol.inOrden());
-                    break;
-                case "postOrder":
-                    this.crearJson(arbol.postOrden());
-                    break;
-                default:
-                    response.setStatus(400);
-            }
-        } catch (IOException ex) {
+            int nivel = Integer.valueOf(this.request.getParameter("level")) - 1;
+            ArrayList<String> cartas = arbol.getNivel(nivel);
+            crearJson(cartas);
+        } catch (IOException | NumberFormatException e) {
             response.setStatus(400);
-            ex.printStackTrace(System.out);
         }
     }
 
@@ -52,5 +40,4 @@ public class GetTreeF {
         response.setCharacterEncoding("UTF-8");
         response.getWriter().append(json + "\n}");
     }
-
 }

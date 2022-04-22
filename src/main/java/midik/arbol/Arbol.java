@@ -201,6 +201,22 @@ public class Arbol {
         }
     }
 
+    public ArrayList<String> getNivel(int nivel) {
+        ArrayList<String> cartas = new ArrayList<>();
+        this.getNivel(this.raiz, cartas, nivel);
+        return cartas;
+    }
+
+    private void getNivel(Nodo nodo, ArrayList<String> cartas, int nivel) {
+        if (nodo != null) {
+            if (nivel == 0) {
+                cartas.add(nodo.getCarta().toString());
+            }
+            getNivel(nodo.getHijoIzquierdo(), cartas, nivel-1);
+            getNivel(nodo.getHijoDerecho(), cartas, nivel-1);
+        }
+    }
+
     //Metodos para devolver el orden
     public ArrayList<String> inOrden() {
         ArrayList<String> cartas = new ArrayList<>();
