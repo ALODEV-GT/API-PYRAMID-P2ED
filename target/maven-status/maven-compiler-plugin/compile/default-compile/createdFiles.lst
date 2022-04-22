@@ -13,6 +13,7 @@ funcionamiento/AddF.class
 midik/controladores/ControladorGetTree.class
 midik/jsonInsert/sym.class
 test/Test.class
+funcionamiento/StatusF.class
 midik/jsonStart/sym.class
 midik/jsonDelete/parser$CUP$parser$actions.class
 funcionamiento/LevelF.class
@@ -28,4 +29,5 @@ midik/arbol/Nodo.class
 midik/controladores/ControladorLevel.class
 funcionamiento/StartF.class
 funcionamiento/DeleteF.class
+test/Prueba.class
 midik/controladores/ControladorStatus.class

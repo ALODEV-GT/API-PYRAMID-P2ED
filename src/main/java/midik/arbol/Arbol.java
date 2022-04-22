@@ -10,7 +10,7 @@ public class Arbol {
     public Arbol() {
         this.raiz = null;
     }
-
+    
     //Buscar
     public Nodo buscar(Carta carta, Nodo raiz) {
         if (raiz == null) {
