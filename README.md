@@ -53,6 +53,14 @@ Respuesta:
 }
 ```
 
+arbol.jpg
+<p >
+  <kbd>
+    <img src="https://i.ibb.co/RCLGXnW/arbol.jpg" alt="arbol" border="0">
+  </kbd>
+</p>
+
+
 ### Obtener orden del arbol
 GET:
 `serverName/Proyecto2ED-1.0/Game/avltree?transversal=preOrder`
