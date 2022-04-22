@@ -9,8 +9,9 @@ public class Generador {
     public void graficar(String path, Nodo raiz) {
         FileWriter fichero = null;
         PrintWriter escritor;
+        String pathRecursosServer = "/home/midik/imagenesArbol/";
         try {
-            fichero = new FileWriter("/home/midik/NetBeansProjects/Proyecto2ED/aux_grafico.dot");
+            fichero = new FileWriter(pathRecursosServer + "aux_grafico.dot");
             escritor = new PrintWriter(fichero);
             escritor.print(getCodigoGraphviz(raiz));
         } catch (Exception e) {
@@ -26,11 +27,11 @@ public class Generador {
         }
         try {
             Runtime rt = Runtime.getRuntime();
-            rt.exec("dot -Tjpg -o " + "/home/midik/NetBeansProjects/Proyecto2ED/" + path + " /home/midik/NetBeansProjects/Proyecto2ED/aux_grafico.dot");
+            rt.exec("dot -Tjpg -o " + pathRecursosServer + path +" "+pathRecursosServer +"aux_grafico.dot");
             //Esperamos medio segundo para dar tiempo a que la imagen se genere.
             //Para que no sucedan errores en caso de que se decidan graficar varios
             //árboles sucesivamente.
-            Thread.sleep(4000);
+            Thread.sleep(500);
         } catch (Exception ex) {
             System.err.println("Error al generar la imagen para el archivo aux_grafico.dot");
         }

@@ -21,6 +21,19 @@ public class StatusF {
     public void getStatus() {
         Arbol arbol = SingletonArbol.getArbol();
         Generador generador = new Generador();
-        generador.graficar("arbolin.jpg", arbol.getRaiz());
+        generador.graficar("arbol.jpg", arbol.getRaiz());
+        try {
+            crearJson();
+        } catch (IOException ex) {
+            response.setStatus(400);
+        }
+    }
+
+    private void crearJson() throws IOException {
+        String json = "{\n";
+        String serverName = request.getServerName();
+        String path = serverName + "/imagenes/arbol.jpg";
+        json += "\t\"path\":" + path;
+        response.getWriter().append(json + "\n}");
     }
 }
