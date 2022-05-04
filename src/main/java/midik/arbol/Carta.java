@@ -44,6 +44,9 @@ public class Carta {
     private String formatearValor(int valor) {
         String valorS = String.valueOf(valor);
         switch (valor) {
+            case 1:
+                valorS = "A";
+                break;
             case 11:
                 valorS = "J";
                 break;

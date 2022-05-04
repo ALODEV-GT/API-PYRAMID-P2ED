@@ -29,6 +29,7 @@ public class Comunes {
         entrada = entrada.replace("â¦", "♦");
         entrada = entrada.replace("â", "♠");
         entrada = entrada.replace("J", "11");
+        entrada = entrada.replace("A", "1");
         entrada = entrada.replace("Q", "12");
         entrada = entrada.replace("K", "13");
         return entrada;
